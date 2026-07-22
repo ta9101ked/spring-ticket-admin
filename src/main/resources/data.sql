@@ -1,0 +1,3 @@
+INSERT INTO tickets (ticket_no, title, status, priority, requester_name) VALUES ('91234567890', 'Ticket 1', 'Open', 'High', 'John Doe');
+INSERT INTO tickets (ticket_no, title, status, priority, requester_name) VALUES ('91234567891', 'Ticket 2', 'In_Progress', 'Medium', 'Jane Doe');
+INSERT INTO tickets (ticket_no, title, status, priority, requester_name) VALUES ('91234567892', 'Ticket 3', 'Done', 'Low', 'Jim Doe');

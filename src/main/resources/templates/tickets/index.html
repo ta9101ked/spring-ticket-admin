@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tickets</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        .flash { background: #e8f8ef; border: 1px solid #b7e0d5; padding: 8px 12px; margin-bottom: 12px; }
+        .error { color: #991b1b; font-size: 0.85rem; }
+        table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+        th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
+        form.inline { display: inline; }
+        .filters { display: flex; gap: 8px; align-items: center; margin: 12px 0; }
+    </style>
+</head>
+<body>
+    <h1>Tickets</h1>
+
+    <div th:if="${successMessage}" class="flash" th:text="${successMessage}"></div>
+
+    <p><a th:href="@{/tickets/new}">New Ticket</a></p>
+
+    <form class="filters" th:action="@{/tickets}" method="get">
+        <select name="status">
+            <option value="">All</option>
+            <option th:each="s : ${statuses}"
+                    th:value="${s}"
+                    th:text="${s}"
+                    th:selected="${status == s}"></option>
+        </select>
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Title keyword"/>
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TicketNo</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.id}"></td>
+            <td th:text="${ticket.ticketNo}"></td>
+            <td th:text="${ticket.title}"></td>
+            <td th:text="${ticket.status}"></td>
+            <td th:text="${ticket.priority}"></td>
+            <td>
+                <a th:href="@{/tickets/{id}/edit(id=${ticket.id})}">Edit</a>
+            </td>
+            <td>
+                <form class="inline" th:action="@{/tickets/{id}/delete(id=${ticket.id})}" method="post"
+                      onsubmit="return confirm('Are you sure you want to delete this ticket?')">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(tickets)}">
+            <td colspan="7">No tickets found.</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

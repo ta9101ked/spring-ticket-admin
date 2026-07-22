@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Not Found</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+    </style>
+</head>
+<body>
+    <h1>Not Found</h1>
+    <p th:text="${message}">Resource not found.</p>
+    <p><a th:href="@{/tickets}">Back to Tickets</a></p>
+</body>
+</html>
