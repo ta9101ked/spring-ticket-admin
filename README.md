@@ -66,6 +66,7 @@ cd /path/to/ticket-admin-sample
 | 基本設計書 | [docs/02_basic_design.md](docs/02_basic_design.md) |
 | 詳細設計書 | [docs/03_detail_design.md](docs/03_detail_design.md) |
 | テスト仕様書 | [docs/04_test_spec.md](docs/04_test_spec.md) |
+| 営業・提案キット | [docs/outreach/README.md](docs/outreach/README.md) |
 
 > これらは **仮想クライアント（Web知見の少ない企業）を想定した学習用ドキュメント** です。  
 > 実案件の成果物ではありません。実装と齟齬がある場合は文書側に明記します。
